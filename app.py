@@ -10,8 +10,6 @@ import pymysql
 pymysql.install_as_MySQLdb()
 # Import and establish Base for which classes will be constructed 
 from sqlalchemy.ext.declarative import declarative_base
-# Import modules to declare columns and column data types
-from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import Session
 Base = declarative_base()
 engine = create_engine("sqlite:///stocks.sqlite")
