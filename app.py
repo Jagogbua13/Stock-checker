@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 import stock
-
+import requests
 import quandl
 import pandas as pd
 import json
@@ -33,6 +33,13 @@ def tickers(ticker):
     stock_data = stock.stockgetter(ticker)
 
     return jsonify(stock_data)
+
+@app.route("/earnings/<ticker>")
+def earning(ticker):
+    link = f'https://api.iextrading.com/1.0/stock/{ticker}/earnings'
+    f = requests.get(link)
+    stuff = f.json()
+    return jsonify(stuff)
 
 
 
