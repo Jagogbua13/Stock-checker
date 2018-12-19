@@ -42,6 +42,14 @@ def earning(ticker):
     return jsonify(stuff)
 
 
+@app.route("/interest/rates")
+def usInterest():
+    interest_df = pd.read_csv("data/history.csv")
+    interest = interest_df.to_dict()
+    return jsonify(interest)
+
+
+
 
 if __name__ == "__main__":
     app.run()
